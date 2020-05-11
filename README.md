@@ -102,6 +102,9 @@ const styles = StyleSheet.create({
 - create stack navigation
 
 ```js
+import { NavigationContainer } from "@react-navigation/native";
+import Stack from "./navigation/Stack";
+
 return isReady ? (
   <NavigationContainer>
     <Stack />

@@ -5,6 +5,10 @@
 ```
 expo install expo-font
 expo install expo-asset
+npm install @react-navigation/native
+
+expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
+npm install @react-navigation/stack
 ```
 
 # 1.0 Creating the Project (5:19)
@@ -91,6 +95,61 @@ const styles = StyleSheet.create({
 ```
 
 # 1.3 Stack Navigation (9:04)
+
+## install React navigation 5.x
+
+- make dir structure > navigtion/screens folder
+- create stack navigation
+
+```js
+return isReady ? (
+  <NavigationContainer>
+    <Stack />
+  </NavigationContainer>
+) : (
+  <AppLoading
+    startAsync={loadAssets}
+    onFinish={onFinish}
+    onError={console.error}
+  />
+);
+```
+
+```js
+import React from "react";
+import { createStackNavigator } from "@react-navigation/stack";
+import { View, Text, Button } from "react-native";
+import Home from "../screens/Home";
+import Detail from "../screens/Detail";
+
+const Stack = createStackNavigator();
+
+export default () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Detail" component={Detail} />
+    </Stack.Navigator>
+  );
+};
+```
+
+```js
+import React from "react";
+import { View, Text, Button } from "react-native";
+
+export default ({ navigation }) => {
+  return (
+    <View>
+      <Text>Home</Text>
+      <Button
+        title="Go to Detail"
+        onPress={() => navigation.navigate("Detail")}
+      />
+    </View>
+  );
+};
+```
 
 # 1.4 Tabs Navigation (10:28)
 

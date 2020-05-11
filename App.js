@@ -5,6 +5,9 @@ import { Asset } from "expo-asset";
 import * as Font from "expo-font";
 import { Ionicons } from "@expo/vector-icons";
 
+import { NavigationContainer } from "@react-navigation/native";
+import Stack from "./navigation/Stack";
+
 const cacheImages = (images) =>
   images.map((image) => {
     if (typeof image === "string") {
@@ -33,9 +36,9 @@ export default function App() {
   };
 
   return isReady ? (
-    <View style={styles.container}>
-      <Text>Ready!</Text>
-    </View>
+    <NavigationContainer>
+      <Stack />
+    </NavigationContainer>
   ) : (
     <AppLoading
       startAsync={loadAssets}
@@ -44,12 +47,3 @@ export default function App() {
     />
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

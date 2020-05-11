@@ -1,5 +1,12 @@
 # dovie2 React Native + Expo
 
+# dependencies
+
+```
+expo install expo-font
+expo install expo-asset
+```
+
 # 1.0 Creating the Project (5:19)
 
 ```
@@ -14,27 +21,35 @@ expo init dovie
 
 # 1.1 cacheImages (10:25)
 
+# 1.2 cacheFonts (5:49)
+
 ## 프리로드 에셋
 
 - AppLoading 컴포넌트를 통해 (splash스크린을 보여주면서)
 - 에셋을 프리로드해둔다.
-- 로컬 에셋(내부적으로 asset폴더안을 정수 key로 참조하는듯) + fetch 에셋
+- cacheImages : 이미지 프리로드 (Promise 리턴)
+- 로컬 이미지> 에셋(내부적으로 asset폴더안을 정수 key로 참조하는듯) + 이미지url> fetch 에셋
+- cacheFonts : 폰트 프리로드 ( Promise 리턴)
+- cahce => Promise all
 
 ```js
 import React, { useState } from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 import { AppLoading } from "expo";
 import { Asset } from "expo-asset";
+import * as Font from "expo-font";
+import { Ionicons } from "@expo/vector-icons";
 
 const cacheImages = (images) =>
   images.map((image) => {
-    console.log(image);
     if (typeof image === "string") {
       return Image.prefetch(image);
     } else {
       return Asset.fromModule(image).downloadAsync();
     }
   });
+
+const cacheFonts = (fonts) => fonts.map((font) => Font.loadAsync(font));
 
 export default function App() {
   const [isReady, setIsReady] = useState(false);
@@ -47,6 +62,9 @@ export default function App() {
       "https://images.unsplash.com/photo-1584486188544-dc2e1417aff1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
       require("./assets/splash.png"),
     ]);
+    const fonts = cacheFonts([Ionicons.font]);
+
+    return Promise.all([...images, ...fonts]);
   };
 
   return isReady ? (
@@ -71,8 +89,6 @@ const styles = StyleSheet.create({
   },
 });
 ```
-
-# 1.2 cacheFonts (5:49)
 
 # 1.3 Stack Navigation (9:04)
 

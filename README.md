@@ -12,6 +12,11 @@ npm install @react-navigation/stack
 npm install @react-navigation/bottom-tabs
 ```
 
+# 빅피쳐
+
+1. 프리로드 에셋
+2. 네이게이터
+
 # 1.0 Creating the Project (5:19)
 
 ```

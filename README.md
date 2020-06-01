@@ -1,5 +1,7 @@
 # dovie2 React Native + Expo
 
+# 3.7 continue...
+
 # dependencies
 
 ```
@@ -11,12 +13,26 @@ expo install react-native-gesture-handler react-native-reanimated react-native-s
 npm install @react-navigation/stack
 npm install @react-navigation/bottom-tabs
 
+yarn add react-native-web-swiper
+yarn add styled-components
 ```
 
 # 빅피쳐
 
 1. 프리로드 에셋
 2. 네이게이터
+   2.1 네이게이터 스타일링
+
+3. API Layer
+   3.1 sexy 한 함수 디자인
+4. Screens
+
+# Tips
+
+1. components 폴더구조.
+
+- 공통적으로 이곳저곳에서 사용하는 컴포넌트는 components 폴더의 root에 위치.
+- screens/Moives 에서만 사용하는 컴포넌트는 components/Moives 폴더에 위치.
 
 # 1.0 Creating the Project (5:19)
 
@@ -170,3 +186,27 @@ export default ({ navigation }) => {
 # 1.7 Styling Nav (10:56)
 
 # 1.8 Adding the Icons (11:28)
+
+# 3 Movie Screen
+
+# 3.0 Home Slider (9:45)
+
+# 3.1 Home Slider part Two (7:04)
+
+# 3.2 Slider Background (11:10)
+
+# 3.3 Slider Content (6:52)
+
+# 3.4 Finishing the Slider (13:43)
+
+# 3.5 Popular Movies part One (10:40)
+
+# 3.6 Vertical Movie Component (9:53)
+
+# 3.7 Vertical Movie Component part Two (7:05)
+
+# 3.8 Horizontal part One (13:15)
+
+# 3.9 Horizontal part Two (14:24)
+
+# 3.10 Finishing the Movies (4:25)
